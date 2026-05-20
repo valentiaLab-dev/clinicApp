@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const middleware_1 = __importDefault(require("./utils/middleware"));
-const config_1 = __importDefault(require("./config"));
+const config_1 = __importDefault(require("./config/config"));
 const persons_1 = __importDefault(require("./controllers/persons"));
 const positions_1 = __importDefault(require("./controllers/positions"));
 const employees_1 = __importDefault(require("./controllers/employees"));
@@ -27,7 +28,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.static('dist'));
 if (config_1.default.ENV !== "live") {
-    app.use(cors());
+    app.use((0, cors_1.default)());
 }
 app.use(middleware_1.default.morganLogger);
 app.use(middleware_1.default.tokenExtractor);
