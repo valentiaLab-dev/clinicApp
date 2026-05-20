@@ -4,50 +4,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const middleware_1 = __importDefault(require("./utils/middleware"));
-const config_1 = __importDefault(require("./config/config"));
-const persons_1 = __importDefault(require("./controllers/persons"));
-const positions_1 = __importDefault(require("./controllers/positions"));
-const employees_1 = __importDefault(require("./controllers/employees"));
-const patients_1 = __importDefault(require("./controllers/patients"));
-const appointments_1 = __importDefault(require("./controllers/appointments"));
-const users_1 = __importDefault(require("./controllers/users"));
-const login_1 = __importDefault(require("./controllers/login"));
-const access_1 = __importDefault(require("./controllers/access"));
-const health_1 = __importDefault(require("./controllers/health"));
-const notifications_1 = __importDefault(require("./controllers/notifications"));
-const inventories_1 = __importDefault(require("./controllers/inventories"));
-const products_1 = __importDefault(require("./controllers/products"));
-const suppliers_1 = __importDefault(require("./controllers/suppliers"));
-const services_1 = __importDefault(require("./controllers/services"));
-const invoices_1 = __importDefault(require("./controllers/invoices"));
-const discounts_1 = __importDefault(require("./controllers/discounts"));
-const tools_1 = __importDefault(require("./controllers/tools"));
 const app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use(express_1.default.static('dist'));
-if (config_1.default.ENV !== "live") {
-    app.use((0, cors_1.default)());
-}
-app.use(middleware_1.default.morganLogger);
-app.use(middleware_1.default.tokenExtractor);
-app.use('/api/persons', persons_1.default);
-app.use('/api/positions', positions_1.default);
-app.use('/api/employees', employees_1.default);
-app.use('/api/patients', patients_1.default);
-app.use('/api/appointments', appointments_1.default);
-app.use('/api/users', users_1.default);
-app.use('/login', login_1.default);
-app.use('/api/access', access_1.default);
-app.use('/health', health_1.default);
-app.use('/api/notifications', notifications_1.default);
-app.use('/api/inventories', inventories_1.default);
-app.use('/api/products', products_1.default);
-app.use('/api/suppliers', suppliers_1.default);
-app.use('/api/services', services_1.default);
-app.use('/api/invoices', invoices_1.default);
-app.use('/api/discounts', discounts_1.default);
-app.use('/tools', tools_1.default);
-app.use(middleware_1.default.errorHandler);
+// app.use(express.json())
+// app.use(express.static('dist'))
+// if (config.ENV !== "live") {
+//     app.use(cors())
+// }
+// app.use(middleware.morganLogger)
+// app.use(middleware.tokenExtractor)
+// app.use('/api/persons', persons)
+// app.use('/api/positions', positions)
+// app.use('/api/employees', employees)
+// app.use('/api/patients', patients)
+// app.use('/api/appointments', appointments)
+// app.use('/api/users', users)
+// app.use('/login', login)
+// app.use('/api/access', access)
+// app.use('/health', health)
+// app.use('/api/notifications', notifications)
+// app.use('/api/inventories', inventories)
+// app.use('/api/products', products)
+// app.use('/api/suppliers', suppliers)
+// app.use('/api/services', services)
+// app.use('/api/invoices', invoices)
+// app.use('/api/discounts', discounts)
+// app.use('/tools', tools)
+// app.use(middleware.errorHandler)
 exports.default = app;

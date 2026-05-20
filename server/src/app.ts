@@ -24,7 +24,7 @@ const app = express()
 app.use(express.json())
 app.use(express.static('dist'))
 
-if (config.ENV !== "live") {
+if (config.ENV === "test") {
     app.use(cors())
 }
 

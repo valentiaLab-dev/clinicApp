@@ -2,11 +2,14 @@
   "name": "clinic_app_devnich",
   "version": "1.0.0",
   "description": "Clinic App",
-  "main": "index.js",
+  "type": "commonjs",
+  "main": "src/index.ts",
   "scripts": {
     "start": "cross-env NODE_ENV=test ts-node src/index.ts",
     "dev": "cross-env NODE_ENV=test ts-node --watch src/index.ts",
+    "dev2": "nodemon --watch 'src/**/*.ts' --exec NODE_ENV=test 'ts-node' src/index.ts",
     "test": "cross-env NODE_ENV=test node --test",
+    "start2": "ts-node src/index.ts",
     "lint": "eslint ."
   },
   "author": "Christine Sapuras",
