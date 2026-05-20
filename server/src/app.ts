@@ -24,9 +24,9 @@ const app = express()
 app.use(express.json())
 app.use(express.static('dist'))
 
-if (config.ENV === "test") {
-    app.use(cors())
-}
+// if (config.ENV === "test") {
+//     app.use(cors())
+// }
 
 app.use(middleware.morganLogger)
 app.use(middleware.tokenExtractor)
