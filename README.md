@@ -42,6 +42,7 @@ Implemented:
 * MongoDB
 * Mongoose
 * Jwt
+* Typescript
 
 
 [Deployed on render](https://clinicapp-l78g.onrender.com/#/login).
