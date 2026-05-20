@@ -4,8 +4,8 @@
   "description": "Clinic App",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=test node index.js",
-    "dev": "cross-env NODE_ENV=test node --watch index.js",
+    "start": "cross-env NODE_ENV=test ts-node src/index.ts",
+    "dev": "cross-env NODE_ENV=test ts-node --watch src/index.ts",
     "test": "cross-env NODE_ENV=test node --test",
     "lint": "eslint ."
   },
@@ -16,8 +16,6 @@
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "cross-env": "^10.1.0",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.2",
     "morgan": "^1.10.1",
@@ -25,9 +23,25 @@
     "puppeteer-core": "^24.42.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "eslint": "^9.36.0",
-    "globals": "^16.4.0",
-    "supertest": "^7.1.4"
+    "@eslint/js": "^9.39.4",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.9.1",
+    "@types/qs": "^6.15.1",
+    "dotenv": "^17.4.2",
+    "eslint": "^9.39.4",
+    "express": "^5.2.1",
+    "globals": "^16.5.0",
+    "install": "^0.13.0",
+    "nodemon": "^3.1.14",
+    "npm": "^11.14.1",
+    "prettier": "^3.8.3",
+    "supertest": "^7.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.4"
   }
 }
