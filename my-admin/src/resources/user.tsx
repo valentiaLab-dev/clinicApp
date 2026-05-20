@@ -16,7 +16,7 @@ import {
 const UserList = () => {
   return (
     <List exporter={false}>
-      <DataTable  bulkActionButtons={false}>
+      <DataTable bulkActionButtons={false}>
         <DataTable.Col source="username" />
         <DataTable.Col label="Access">
           <ReferenceField source="access" reference="access" link={false}>
@@ -35,7 +35,11 @@ const UserList = () => {
         </DataTable.Col>
         <DataTable.Col label="Position">
           <ReferenceField source="employee" reference="employees" link={false}>
-            <ReferenceField source="position" reference="positions" link={false}>
+            <ReferenceField
+              source="position"
+              reference="positions"
+              link={false}
+            >
               <TextField source="title" />
             </ReferenceField>
           </ReferenceField>
@@ -75,41 +79,55 @@ const UserEdit = () => (
           optionValue="id"
         />
       </ReferenceInput>
-      <ReferenceInput source="employee" reference="employees" filter={{ "populate": "person" }} link={false}>
-          <AutocompleteInput
-            label="Employee"
-            disabled
-            optionText={(employee) => {
-              return `${employee.person.first_name} ${employee.person.middle_name} ${employee.person.last_name} ${employee.person.suffix}`;
-            }}
-            optionValue="id"
-          />
+      <ReferenceInput
+        source="employee"
+        reference="employees"
+        filter={{ populate: "person" }}
+        link={false}
+      >
+        <AutocompleteInput
+          label="Employee"
+          disabled
+          optionText={(employee) => {
+            return `${employee.person.first_name} ${employee.person.middle_name} ${employee.person.last_name} ${employee.person.suffix}`;
+          }}
+          optionValue="id"
+        />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
 );
-
 
 const UserCreate = () => (
   <Create>
     <SimpleForm sanitizeEmptyValues>
       <TextInput source="username" validate={required()} />
       <TextInput source="password" validate={required()} />
-      <ReferenceInput source="access" label="Access" reference="access" link={false}>
+      <ReferenceInput
+        source="access"
+        label="Access"
+        reference="access"
+        link={false}
+      >
         <AutocompleteInput
           validate={required()}
           optionText="title"
           optionValue="id"
         />
       </ReferenceInput>
-      <ReferenceInput source="employee" reference="employees" filter={{ "populate": "person" }} link={false}>
-          <AutocompleteInput
-            label="Employee"
-            optionText={(employee) => {
-              return `${employee.person.first_name} ${employee.person.middle_name} ${employee.person.last_name} ${employee.person.suffix}`;
-            }}
-            optionValue="id"
-          />
+      <ReferenceInput
+        source="employee"
+        reference="employees"
+        filter={{ populate: "person" }}
+        link={false}
+      >
+        <AutocompleteInput
+          label="Employee"
+          optionText={(employee) => {
+            return `${employee.person.first_name} ${employee.person.middle_name} ${employee.person.last_name} ${employee.person.suffix}`;
+          }}
+          optionValue="id"
+        />
       </ReferenceInput>
     </SimpleForm>
   </Create>

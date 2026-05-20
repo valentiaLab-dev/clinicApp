@@ -11,7 +11,7 @@ import {
   ReferenceField,
   ReferenceInput,
   AutocompleteInput,
-  required
+  required,
 } from "react-admin";
 const InventoryList = () => {
   return (
