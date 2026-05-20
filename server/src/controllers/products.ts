@@ -1,25 +1,25 @@
-import config from '../config/config';
-import jwt, { JwtPayload } from 'jsonwebtoken'
-import User from '../models/user'
-import Model from '../models/product'
-import express , { Request, Response, NextFunction } from 'express';
-import responses from '../constants/responses'
+import config from "../config/config";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import User from "../models/user";
+import Model from "../models/product";
+import express, { Request, Response, NextFunction } from "express";
+import responses from "../constants/responses";
 
 const router = express.Router();
 
 interface AuthRequest extends Request {
-  token? : string | null
+  token?: string | null;
 }
 
-interface DecodedToken extends JwtPayload{
-  id? : string
+interface DecodedToken extends JwtPayload {
+  id?: string;
 }
 
 router.get("/", async (request, response) => {
   const collection = await Model.find({});
-  response.setHeader("X-Total-Count","10")
-  response.setHeader("Access-Control-Expose-Headers","Content-Range")
-  response.setHeader("Content-Range","bytes: 0-9/*")
+  response.setHeader("X-Total-Count", "10");
+  response.setHeader("Access-Control-Expose-Headers", "Content-Range");
+  response.setHeader("Content-Range", "bytes: 0-9/*");
   response.json(collection);
 });
 
@@ -28,20 +28,23 @@ router.get("/:id", async (request, response) => {
 
   const result = await Model.find({ _id: id });
   if (result) {
-    result[0].id = result[0]._id.toString()
+    result[0].id = result[0]._id.toString();
     response.json(result[0]);
   } else {
     response.status(404).end();
   }
 });
 
-router.post("/", async (request:AuthRequest, response) => {
+router.post("/", async (request: AuthRequest, response) => {
   const body = request.body;
-  
+
   if (config.ENV !== "test") {
-    const decodedToken:DecodedToken|string = jwt.verify(request.token ?? '', config.SECRET);
-    if (typeof decodedToken === 'string') {
-      return response.status(400).json({ error: responses.ERR_TOKEN_INVALID});
+    const decodedToken: DecodedToken | string = jwt.verify(
+      request.token ?? "",
+      config.SECRET,
+    );
+    if (typeof decodedToken === "string") {
+      return response.status(400).json({ error: responses.ERR_TOKEN_INVALID });
     }
     const user = await User.findById(decodedToken.id);
 
@@ -63,10 +66,13 @@ router.post("/clean", async (request, response) => {
   response.json(200).end;
 });
 
-router.put("/:id", async (request:AuthRequest, response) => {
+router.put("/:id", async (request: AuthRequest, response) => {
   if (config.ENV !== "test") {
-    const decodedToken:DecodedToken|string = jwt.verify(request.token ?? '', config.SECRET);
-    if (typeof decodedToken === 'string') {
+    const decodedToken: DecodedToken | string = jwt.verify(
+      request.token ?? "",
+      config.SECRET,
+    );
+    if (typeof decodedToken === "string") {
       return response.status(400).json({ error: responses.ERR_TOKEN_INVALID });
     }
   }
@@ -79,10 +85,13 @@ router.put("/:id", async (request:AuthRequest, response) => {
   response.status(200).json(result);
 });
 
-router.delete("/:id", async (request:AuthRequest, response) => {
+router.delete("/:id", async (request: AuthRequest, response) => {
   if (config.ENV !== "test") {
-    const decodedToken:DecodedToken|string = jwt.verify(request.token ?? '', config.SECRET);
-    if (typeof decodedToken === 'string') {
+    const decodedToken: DecodedToken | string = jwt.verify(
+      request.token ?? "",
+      config.SECRET,
+    );
+    if (typeof decodedToken === "string") {
       return response.status(400).json({ error: responses.ERR_TOKEN_INVALID });
     }
   }

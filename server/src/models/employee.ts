@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -11,9 +11,9 @@ mongoose.connect(url).catch((error) => {
 });
 
 interface Model {
-  hire_date:Date;
-  salary?:number;
-  is_active:boolean;
+  hire_date: Date;
+  salary?: number;
+  is_active: boolean;
   position: object;
   person: object;
   id?: string;
@@ -29,12 +29,12 @@ const schema = new mongoose.Schema<Model>({
   salary: {
     type: Number,
     required: false,
-    default: 0
+    default: 0,
   },
   is_active: {
     type: Boolean,
     required: false,
-    default: true
+    default: true,
   },
   position: {
     type: mongoose.Schema.Types.ObjectId,
@@ -48,7 +48,7 @@ const schema = new mongoose.Schema<Model>({
   },
 });
 
-schema.index({ position: 1, person: 1 }, { unique: true })
+schema.index({ position: 1, person: 1 }, { unique: true });
 
 schema.set("toJSON", {
   transform: (document, returnedObject) => {

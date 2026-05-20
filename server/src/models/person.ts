@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -64,7 +64,10 @@ const schema = new mongoose.Schema<Person>({
   },
 });
 
-schema.index({ first_name: 1, middle_name: 1, last_name: 1, suffix: 1 }, { unique: true })
+schema.index(
+  { first_name: 1, middle_name: 1, last_name: 1, suffix: 1 },
+  { unique: true },
+);
 
 schema.set("toJSON", {
   transform: (document, returnedObject) => {

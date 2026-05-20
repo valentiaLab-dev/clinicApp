@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -22,33 +22,33 @@ interface Model {
   allergies?: Array<SubModel>;
   medical_history?: Array<SubModel>;
   family_history?: Array<SubModel>;
-  appointments: Array<object>
+  appointments: Array<object>;
   id?: string;
   _id?: string;
   __v?: string;
 }
 const medicationsSchema = new mongoose.Schema<SubModel>({
   description: { type: String, required: true },
-  start_date: { type: Date},
-  end_date: { type: Date},
+  start_date: { type: Date },
+  end_date: { type: Date },
 });
 
 const allergiesSchema = new mongoose.Schema<SubModel>({
   description: { type: String, required: true },
-  start_date: { type: Date},
-  end_date: { type: Date},
+  start_date: { type: Date },
+  end_date: { type: Date },
 });
 
 const medicalHistorySchema = new mongoose.Schema<SubModel>({
   description: { type: String, required: true },
-  start_date: { type: Date},
-  end_date: { type: Date},
+  start_date: { type: Date },
+  end_date: { type: Date },
 });
 
 const familyHistorySchema = new mongoose.Schema<SubModel>({
   description: { type: String, required: true },
-  start_date: { type: Date},
-  end_date: { type: Date},
+  start_date: { type: Date },
+  end_date: { type: Date },
 });
 
 const schema = new mongoose.Schema<Model>({

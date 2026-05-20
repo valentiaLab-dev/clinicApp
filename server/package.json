@@ -8,7 +8,9 @@
     "start": "cross-env NODE_ENV=test ts-node src/index.ts",
     "dev": "nodemon --watch 'src/**/*.ts' --exec NODE_ENV=test 'ts-node' src/index.ts",
     "test": "cross-env NODE_ENV=test node --test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check": "prettier ./src --check",
+    "prettier": "prettier ./src --write"
   },
   "author": "Christine Sapuras",
   "license": "ISC",

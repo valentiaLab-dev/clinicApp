@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -37,10 +37,10 @@ const schema = new mongoose.Schema<Model>({
     type: [String],
   },
   products: [
-  {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
-  },
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
   ],
 });
 

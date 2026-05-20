@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -25,25 +25,22 @@ interface Model {
   __v?: string;
 }
 
-
 const schema = new mongoose.Schema<Model>({
-  appointment:
+  appointment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Appointment",
+  },
+  patient: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Patient",
+  },
+  discount: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Appointment",
-    },
-  patient:
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Patient",
-    },
-  discount: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Discount",
-    }],
-  print_request: [
-    { type: Date }
-  ]
+    },
+  ],
+  print_request: [{ type: Date }],
 });
 
 schema.set("toJSON", {

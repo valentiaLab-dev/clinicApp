@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -13,10 +13,10 @@ mongoose.connect(url).catch((error) => {
 interface Model {
   patient: object;
   appointment_date: Date;
-  details:string;
+  details: string;
   physician?: string;
   type: string;
-  status:string;
+  status: string;
   referral_details?: string;
   created_at: Date;
   created_by: object;
@@ -31,7 +31,7 @@ const schema = new mongoose.Schema<Model>({
     ref: "Patient",
     required: true,
   },
-  appointment_date:{
+  appointment_date: {
     type: Date,
     required: true,
   },
@@ -62,7 +62,7 @@ const schema = new mongoose.Schema<Model>({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Employee",
     required: true,
-  }
+  },
 });
 
 schema.set("toJSON", {

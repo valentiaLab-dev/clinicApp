@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -74,11 +74,11 @@ const schema = new mongoose.Schema<Model>({
   },
 });
 
-schema.pre("save", function(next){
+schema.pre("save", function (next) {
   // TODO: trigger notification here
 
   next();
-})
+});
 
 schema.set("toJSON", {
   transform: (document, returnedObject) => {

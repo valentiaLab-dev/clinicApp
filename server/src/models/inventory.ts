@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -11,7 +11,7 @@ mongoose.connect(url).catch((error) => {
 });
 
 interface Model {
-  product:object;
+  product: object;
   supplier: object;
   quantity: number;
   id?: string;
@@ -21,19 +21,19 @@ interface Model {
 
 const schema = new mongoose.Schema<Model>({
   product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Products",
-      require:true,
-    },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Products",
+    require: true,
+  },
   supplier: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Suppliers",
-      require:true,
-    },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Suppliers",
+    require: true,
+  },
   quantity: {
     type: Number,
     default: 0,
-    require:true,
+    require: true,
   },
 });
 

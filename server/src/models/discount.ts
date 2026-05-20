@@ -1,6 +1,6 @@
-import config from '../config/config';
-import logger from '../utils/logger';
-import mongoose from 'mongoose'
+import config from "../config/config";
+import logger from "../utils/logger";
+import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
@@ -13,8 +13,8 @@ mongoose.connect(url).catch((error) => {
 interface Model {
   name: string;
   description?: string;
-  value:number;
-  value_type:string;
+  value: number;
+  value_type: string;
   id?: string;
   _id?: string;
   __v?: string;
@@ -36,7 +36,7 @@ const schema = new mongoose.Schema<Model>({
   value_type: {
     type: String,
     required: true,
-    default: "value"
+    default: "value",
   },
 });
 
