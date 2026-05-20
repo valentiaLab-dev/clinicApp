@@ -31,28 +31,27 @@ describe(`[API Test] ${route}`, () => {
     await Access.insertMany(initialDataAccess);
     await Position.insertMany(initialDataPosition);
     await Person.insertMany(initialDataPerson);
-    const allPosition = await helper.allDbPositions()
-    const allPerson = await helper.allDbPersons()
-    const allAccess = await helper.allDbAccess()
+    const allPosition = await helper.allDbPositions();
+    const allPerson = await helper.allDbPersons();
+    const allAccess = await helper.allDbAccess();
 
-    initialDataEmployee.map((value,index)=>{
-      value.person = allPerson[index].id
-      value.position = allPosition[index].id
-      return value
-    })
+    initialDataEmployee.map((value, index) => {
+      value.person = allPerson[index].id;
+      value.position = allPosition[index].id;
+      return value;
+    });
 
     await Employee.insertMany(initialDataEmployee);
 
-    const allEmployee = await helper.allDbEmployees()
+    const allEmployee = await helper.allDbEmployees();
 
-    initialData.map((value,index)=>{
-      value.employee = allEmployee[index].id
-      value.access = allAccess[index].id
-      return value
-    })
+    initialData.map((value, index) => {
+      value.employee = allEmployee[index].id;
+      value.access = allAccess[index].id;
+      return value;
+    });
 
     await Model.insertMany(initialData);
-
   });
 
   test("Create item", async () => {
@@ -65,7 +64,7 @@ describe(`[API Test] ${route}`, () => {
       username: "newroot",
       password: "123456",
       employee: employee._id,
-      access: access._id
+      access: access._id,
     };
 
     await api
@@ -89,7 +88,7 @@ describe(`[API Test] ${route}`, () => {
       username: "stoma4",
       password: "123456",
       employee: employee._id,
-      access: access._id
+      access: access._id,
     };
 
     const response = await api
@@ -109,7 +108,7 @@ describe(`[API Test] ${route}`, () => {
       username: "invalidpassword",
       password: "12",
       employee: employee._id,
-      access: access._id
+      access: access._id,
     };
 
     const response = await api

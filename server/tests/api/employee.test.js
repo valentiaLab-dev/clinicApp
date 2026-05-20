@@ -23,14 +23,14 @@ describe(`[API Test] ${route}`, () => {
 
     await Position.insertMany(initialDataPosition);
     await Person.insertMany(initialDataPerson);
-    const allPosition = await helper.allDbPositions()
-    const allPerson = await helper.allDbPersons()
+    const allPosition = await helper.allDbPositions();
+    const allPerson = await helper.allDbPersons();
 
-    initialData.map((value,index)=>{
-      value.person = allPerson[index].id
-      value.position = allPosition[index].id
-      return value
-    })
+    initialData.map((value, index) => {
+      value.person = allPerson[index].id;
+      value.position = allPosition[index].id;
+      return value;
+    });
 
     await Model.insertMany(initialData);
   });
@@ -46,7 +46,7 @@ describe(`[API Test] ${route}`, () => {
       is_active: true,
       salary: "100",
       person: person.id,
-      position: position.id
+      position: position.id,
     };
 
     await api
@@ -64,10 +64,9 @@ describe(`[API Test] ${route}`, () => {
     const dbCollectionPerson = await helper.allDbPersons();
     const dbCollectionPosition = await helper.allDbPositions();
 
-
-    const existing = await Model.findOne({ 
-      position: dbCollectionPosition[0].id, 
-      person: dbCollectionPerson[0].id 
+    const existing = await Model.findOne({
+      position: dbCollectionPosition[0].id,
+      person: dbCollectionPerson[0].id,
     });
 
     const newItem = {
@@ -75,9 +74,9 @@ describe(`[API Test] ${route}`, () => {
       is_active: true,
       salary: "20",
       person: existing.person,
-      position:  existing.position
+      position: existing.position,
     };
-    
+
     const response = await api
       .post(route)
       .send(newItem)
@@ -97,7 +96,7 @@ describe(`[API Test] ${route}`, () => {
       salary: 0,
       is_active: false,
       position: dbCollectionPosition[1].id,
-      person: dbCollectionPerson[2].id
+      person: dbCollectionPerson[2].id,
     };
 
     await api

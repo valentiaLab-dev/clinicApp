@@ -42,7 +42,7 @@
     // "skipLibCheck": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*", "src/index.ts"],
   "exclude": ["node_modules"]
