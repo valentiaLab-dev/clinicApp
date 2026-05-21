@@ -8,8 +8,8 @@ import Submenu from "./Submenu";
 import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import LocalHospitalTwoToneIcon from "@mui/icons-material/LocalHospitalTwoTone";
 import GroupsTwoToneIcon from "@mui/icons-material/GroupsTwoTone";
-import MedicationTwoToneIcon from '@mui/icons-material/MedicationTwoTone';
-import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
+import MedicationTwoToneIcon from "@mui/icons-material/MedicationTwoTone";
+import ReceiptLongTwoToneIcon from "@mui/icons-material/ReceiptLongTwoTone";
 
 const MyMenu = () => (
   <Menu>
