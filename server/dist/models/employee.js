@@ -19,12 +19,12 @@ const schema = new mongoose_1.default.Schema({
     salary: {
         type: Number,
         required: false,
-        default: 0
+        default: 0,
     },
     is_active: {
         type: Boolean,
         required: false,
-        default: true
+        default: true,
     },
     position: {
         type: mongoose_1.default.Schema.Types.ObjectId,

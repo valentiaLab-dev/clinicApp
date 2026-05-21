@@ -9,15 +9,15 @@ const router = express_1.default.Router();
 router.get("/", async (request, response) => {
     const healthcheck = {
         uptime: process.uptime(),
-        message: 'OK',
+        message: "OK",
         timestamp: Date.now(),
-        DBActive: await user_1.default.findOne({}) ? true : false
+        DBActive: (await user_1.default.findOne({})) ? true : false,
     };
     try {
         response.send(healthcheck);
     }
     catch (e) {
-        healthcheck.message = typeof e === 'string' ? e : 'unknown';
+        healthcheck.message = typeof e === "string" ? e : "unknown";
         response.status(503).send();
     }
 });

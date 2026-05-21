@@ -37,15 +37,13 @@ router.post("/safe", async (request, response) => {
 router.post("/", async (request, response) => {
     const body = request.body;
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
         const user = await user_1.default.findById(decodedToken.id);
         if (!user) {
-            return response
-                .status(400)
-                .json({ error: responses_1.default.ERR_USER_INVALID });
+            return response.status(400).json({ error: responses_1.default.ERR_USER_INVALID });
         }
     }
     const item = new person_1.default(body);
@@ -58,8 +56,8 @@ router.post("/clean", async (request, response) => {
 });
 router.put("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }
@@ -72,8 +70,8 @@ router.put("/:id", async (request, response) => {
 });
 router.delete("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }
