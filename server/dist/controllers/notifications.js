@@ -21,8 +21,8 @@ router.get("/", async (request, response) => {
 router.post("/", async (request, response) => {
     const body = request.body;
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
         const user = await user_1.default.findById(decodedToken.id);
@@ -52,14 +52,15 @@ router.post("/send", async (request, response) => {
         return response.status(400).send("Missing required fields");
     }
     const { to, subject, text, html } = request.body;
-    const sgMail = require('@sendgrid/mail');
+    const sgMail = require("@sendgrid/mail");
     sgMail.setApiKey(config_1.default.SENDGRID_API_KEY);
     const msg = {
         to: to || config_1.default.EMAIL,
         from: config_1.default.EMAIL,
-        subject: subject || 'Clinic is open for business!',
-        text: text || 'We are open for business! Please book your appointment now.',
-        html: html || 'We are open for business! Please book your appointment <strong>now.</strong>',
+        subject: subject || "Clinic is open for business!",
+        text: text || "We are open for business! Please book your appointment now.",
+        html: html ||
+            "We are open for business! Please book your appointment <strong>now.</strong>",
     };
     sgMail
         .send(msg)
@@ -77,15 +78,16 @@ router.put("/:id", async (request, response) => {
         return response.status(400).send("Missing required fields");
     }
     const { to, subject, text, html, status } = request.body;
-    if (status && status === 'sending') {
-        const sgMail = require('@sendgrid/mail');
+    if (status && status === "sending") {
+        const sgMail = require("@sendgrid/mail");
         sgMail.setApiKey(config_1.default.SENDGRID_API_KEY);
         const msg = {
             to: to || config_1.default.EMAIL,
             from: config_1.default.EMAIL,
-            subject: subject || 'Clinic is open for business!',
-            text: text || 'We are open for business! Please book your appointment now.',
-            html: html || 'We are open for business! Please book your appointment <strong>now.</strong>',
+            subject: subject || "Clinic is open for business!",
+            text: text || "We are open for business! Please book your appointment now.",
+            html: html ||
+                "We are open for business! Please book your appointment <strong>now.</strong>",
         };
         sgMail
             .send(msg)

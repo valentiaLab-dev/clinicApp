@@ -10,19 +10,11 @@ import {
   List,
   DataTable,
   DateField,
-  EmailField,
-  required,
-  NumberField,
-  SelectField,
-  NumberInput,
   SelectInput,
-  Labeled,
   ReferenceField,
   ReferenceInput,
   AutocompleteInput,
 } from "react-admin";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 const AppointmentList = () => {
   return (
     <List exporter={false}>
@@ -159,14 +151,15 @@ const AppointmentEdit = () => (
   </Edit>
 );
 
-const transform = data => ({
+const transform = (data: object) => ({
   ...data,
   created_by: `68f110602879f920977a3c8d`, // TODO: logged in user
-  created_at: new Date()
+  created_at: new Date(),
 });
 
-const AppointmentCreate = () => <Create transform={transform}>
-  <SimpleForm>
+const AppointmentCreate = () => (
+  <Create transform={transform}>
+    <SimpleForm>
       <ReferenceInput
         source="patient"
         reference="patients"
@@ -214,6 +207,7 @@ const AppointmentCreate = () => <Create transform={transform}>
       />
       <TextInput source="referral_details" />
     </SimpleForm>
-</Create>;
+  </Create>
+);
 
 export { AppointmentList, AppointmentShow, AppointmentEdit, AppointmentCreate };

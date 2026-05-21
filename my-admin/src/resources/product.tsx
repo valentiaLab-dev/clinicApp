@@ -12,7 +12,7 @@ import {
   ArrayField,
   ArrayInput,
   SimpleFormIterator,
-  required
+  required,
 } from "react-admin";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";

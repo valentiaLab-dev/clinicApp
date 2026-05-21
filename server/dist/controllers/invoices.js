@@ -33,8 +33,8 @@ router.get("/:id", async (request, response) => {
 router.post("/", async (request, response) => {
     const body = request.body;
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
         const user = await user_1.default.findById(decodedToken.id);
@@ -46,9 +46,7 @@ router.post("/", async (request, response) => {
     }
     const appt = await appointment_1.default.findById(body.appointment);
     if (!appt) {
-        return response
-            .status(400)
-            .json({ error: "apptId missing or not valid" });
+        return response.status(400).json({ error: "apptId missing or not valid" });
     }
     const patient = await patient_1.default.findById(appt.patient);
     if (!patient) {
@@ -67,8 +65,8 @@ router.post("/clean", async (request, response) => {
 });
 router.put("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }
@@ -81,8 +79,8 @@ router.put("/:id", async (request, response) => {
 });
 router.delete("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }

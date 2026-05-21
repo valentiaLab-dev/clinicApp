@@ -6,28 +6,25 @@ import {
   Edit,
   SimpleForm,
   TextInput,
-  DateInput,
   List,
   DataTable,
-  DateField,
-  EmailField,
   required,
-  NumberField,
-  SelectField,
-  NumberInput,
   SelectInput,
-  Labeled,
-  useRecordContext
+  useRecordContext,
 } from "react-admin";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import { formatDiscount } from "../utils/formatters";
-import Typography from "@mui/material/Typography";
 
-const DiscountField = () =>{
-  const record = useRecordContext();
-  return formatDiscount(record.value, record.value_type)
+interface Record {
+  value: number;
+  value_type: string;
 }
+const DiscountField = () => {
+  const record: Record | undefined = useRecordContext();
+  return formatDiscount(
+    record === undefined ? 0 : record.value,
+    record === undefined ? "no value type" : record.value_type,
+  );
+};
 
 const DiscountList = () => {
   return (
@@ -35,7 +32,7 @@ const DiscountList = () => {
       <DataTable bulkActionButtons={false}>
         <DataTable.Col source="name" />
         <DataTable.Col source="description" />
-        <DataTable.Col label="Discount" >
+        <DataTable.Col label="Discount">
           <DiscountField />
         </DataTable.Col>
       </DataTable>
@@ -61,13 +58,13 @@ const DiscountEdit = () => (
       <TextInput source="description" />
       <TextInput source="value" />
       <SelectInput
-            source="value_type"
-            choices={[
-              { id: "value", name: "Exact Value" },
-              { id: "percentage", name: "Percentage" },
-            ]}
-            validate={[required()]}
-          />
+        source="value_type"
+        choices={[
+          { id: "value", name: "Exact Value" },
+          { id: "percentage", name: "Percentage" },
+        ]}
+        validate={[required()]}
+      />
     </SimpleForm>
   </Edit>
 );
@@ -79,13 +76,13 @@ const DiscountCreate = () => (
       <TextInput source="description" />
       <TextInput source="value" />
       <SelectInput
-            source="value_type"
-            choices={[
-              { id: "value", name: "Exact Value" },
-              { id: "percentage", name: "Percentage" },
-            ]}
-            validate={[required()]}
-          />
+        source="value_type"
+        choices={[
+          { id: "value", name: "Exact Value" },
+          { id: "percentage", name: "Percentage" },
+        ]}
+        validate={[required()]}
+      />
     </SimpleForm>
   </Create>
 );

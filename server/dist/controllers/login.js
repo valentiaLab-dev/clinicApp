@@ -12,7 +12,9 @@ const router = express_1.default.Router();
 router.post("/", async (request, response) => {
     const { username, password } = request.body;
     const user = await user_1.default.findOne({ username });
-    const hash = (user !== null && 'passwordHash' in user && user.passwordHash !== undefined) ? user.passwordHash : '';
+    const hash = user !== null && "passwordHash" in user && user.passwordHash !== undefined
+        ? user.passwordHash
+        : "";
     const passwordCorrect = user === null ? false : await bcrypt_1.default.compare(password, hash);
     if (!(user && passwordCorrect)) {
         return response.status(401).json({
@@ -24,7 +26,7 @@ router.post("/", async (request, response) => {
         id: user._id,
     };
     let token = jsonwebtoken_1.default.sign(userForToken, config_1.default.SECRET);
-    if (config_1.default.ENV === 'production') {
+    if (config_1.default.ENV === "production") {
         // token expires in 60*60 seconds
         token = jsonwebtoken_1.default.sign(userForToken, config_1.default.SECRET, { expiresIn: 60 * 60 });
     }

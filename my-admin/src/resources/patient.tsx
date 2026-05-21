@@ -10,27 +10,17 @@ import {
   List,
   DataTable,
   DateField,
-  EmailField,
   required,
-  NumberField,
-  SelectField,
-  NumberInput,
-  SelectInput,
   Labeled,
-  FunctionField,
   ReferenceInput,
   AutocompleteInput,
-  useRecordContext,
   ReferenceField,
   ArrayField,
-  SingleFieldList,
-  ChipField,
   ArrayInput,
   SimpleFormIterator,
 } from "react-admin";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 const PatientList = () => {
   return (
     <List exporter={false}>
@@ -108,8 +98,8 @@ const PatientShow = () => (
       </Labeled>
 
       <Labeled>
-        <ArrayField source="family_history" >
-          <DataTable bulkActionButtons={false} empty={"-"} >
+        <ArrayField source="family_history">
+          <DataTable bulkActionButtons={false} empty={"-"}>
             <DataTable.Col source="description">
               <TextField source="description" />
             </DataTable.Col>
@@ -136,7 +126,7 @@ const PatientEdit = () => (
         link={false}
       >
         <AutocompleteInput
-        disabled
+          disabled
           validate={required()}
           label="Patient"
           optionText={(person) => {

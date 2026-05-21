@@ -48,7 +48,7 @@ const schema = new mongoose_1.default.Schema({
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "Employee",
         required: true,
-    }
+    },
 });
 schema.set("toJSON", {
     transform: (document, returnedObject) => {

@@ -1,8 +1,4 @@
-import {
-  Admin,
-  Resource,
-  radiantLightTheme,
-} from "react-admin";
+import { Admin, Resource, radiantLightTheme } from "react-admin";
 import { Layout } from "./Layout";
 import simpleRestProvider from "ra-data-simple-rest";
 import {
@@ -36,70 +32,70 @@ import {
   PatientCreate,
 } from "./resources/patient";
 import {
-    AppointmentList,
-    AppointmentShow,
-    AppointmentEdit,
-    AppointmentCreate,
-  } from "./resources/appointment";
-  import {
-    NotificationList,
-    NotificationShow,
-    NotificationEdit,
-    NotificationCreate,
-  } from "./resources/notification";
-  import {
-    SupplierList,
-    SupplierShow,
-    SupplierEdit,
-    SupplierCreate,
-  } from "./resources/supplier";
-  import {
-    ProductList,
-    ProductShow,
-    ProductEdit,
-    ProductCreate,
-  } from "./resources/product";
-  import {
-    InventoryList,
-    InventoryShow,
-    InventoryEdit,
-    InventoryCreate,
-  } from "./resources/inventory";
-  import {
-    DiscountList,
-    DiscountShow,
-    DiscountEdit,
-    DiscountCreate,
-  } from "./resources/discount";
-  import {
-    InvoiceList,
-    InvoiceShow,
-    InvoiceEdit,
-    InvoiceCreate,
-  } from "./resources/invoice";
-    import {
-    ServiceList,
-    ServiceShow,
-    ServiceEdit,
-    ServiceCreate,
-  } from "./resources/service";
+  AppointmentList,
+  AppointmentShow,
+  AppointmentEdit,
+  AppointmentCreate,
+} from "./resources/appointment";
+import {
+  NotificationList,
+  NotificationShow,
+  NotificationEdit,
+  NotificationCreate,
+} from "./resources/notification";
+import {
+  SupplierList,
+  SupplierShow,
+  SupplierEdit,
+  SupplierCreate,
+} from "./resources/supplier";
+import {
+  ProductList,
+  ProductShow,
+  ProductEdit,
+  ProductCreate,
+} from "./resources/product";
+import {
+  InventoryList,
+  InventoryShow,
+  InventoryEdit,
+  InventoryCreate,
+} from "./resources/inventory";
+import {
+  DiscountList,
+  DiscountShow,
+  DiscountEdit,
+  DiscountCreate,
+} from "./resources/discount";
+import {
+  InvoiceList,
+  InvoiceShow,
+  InvoiceEdit,
+  InvoiceCreate,
+} from "./resources/invoice";
+import {
+  ServiceList,
+  ServiceShow,
+  ServiceEdit,
+  ServiceCreate,
+} from "./resources/service";
 import { UserList, UserShow, UserEdit, UserCreate } from "./resources/user";
 import Dashboard from "./pages/dashboard";
-import authProvider from './security/authProvider';
-import BroadcastOnPersonalTwoToneIcon from '@mui/icons-material/BroadcastOnPersonalTwoTone';
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
-import SupervisedUserCircleTwoToneIcon from '@mui/icons-material/SupervisedUserCircleTwoTone';
-import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
-import PersonalInjuryTwoToneIcon from '@mui/icons-material/PersonalInjuryTwoTone';
-import NotificationsTwoToneIcon from '@mui/icons-material/NotificationsTwoTone';
-import Groups3TwoToneIcon from '@mui/icons-material/Groups3TwoTone';
+import authProvider from "./security/authProvider";
+import BroadcastOnPersonalTwoToneIcon from "@mui/icons-material/BroadcastOnPersonalTwoTone";
+import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
+import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
+import BadgeTwoToneIcon from "@mui/icons-material/BadgeTwoTone";
+import SupervisedUserCircleTwoToneIcon from "@mui/icons-material/SupervisedUserCircleTwoTone";
+import PeopleAltTwoToneIcon from "@mui/icons-material/PeopleAltTwoTone";
+import PersonalInjuryTwoToneIcon from "@mui/icons-material/PersonalInjuryTwoTone";
+import NotificationsTwoToneIcon from "@mui/icons-material/NotificationsTwoTone";
+import Groups3TwoToneIcon from "@mui/icons-material/Groups3TwoTone";
 import VaccinesTwoToneIcon from "@mui/icons-material/VaccinesTwoTone";
-import MedicationTwoToneIcon  from "@mui/icons-material/MedicationTwoTone";
-import PercentTwoToneIcon  from "@mui/icons-material/PercentTwoTone";
-import ReceiptLongTwoToneIcon  from "@mui/icons-material/ReceiptLongTwoTone";
-import BackHandTwoToneIcon from '@mui/icons-material/BackHandTwoTone';
+import MedicationTwoToneIcon from "@mui/icons-material/MedicationTwoTone";
+import PercentTwoToneIcon from "@mui/icons-material/PercentTwoTone";
+import ReceiptLongTwoToneIcon from "@mui/icons-material/ReceiptLongTwoTone";
+import BackHandTwoToneIcon from "@mui/icons-material/BackHandTwoTone";
 
 export const App = () => (
   <Admin

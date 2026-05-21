@@ -40,7 +40,12 @@ const EmployeeList = () => {
 const EmployeeShow = () => (
   <Show>
     <SimpleShowLayout>
-      <ReferenceField source="person" label="Employee" reference="persons" link={false}>
+      <ReferenceField
+        source="person"
+        label="Employee"
+        reference="persons"
+        link={false}
+      >
         <TextField source="first_name" /> <TextField source="middle_name" />{" "}
         <TextField source="last_name" /> <TextField source="suffix" />{" "}
       </ReferenceField>
@@ -57,7 +62,12 @@ const EmployeeShow = () => (
 const EmployeeEdit = () => (
   <Edit>
     <SimpleForm>
-      <ReferenceInput source="person" label="Employee" reference="persons" link={false}>
+      <ReferenceInput
+        source="person"
+        label="Employee"
+        reference="persons"
+        link={false}
+      >
         <AutocompleteInput
           disabled
           label="Employee"
@@ -66,7 +76,12 @@ const EmployeeEdit = () => (
           }}
         />
       </ReferenceInput>
-      <ReferenceInput source="position" label="Position" reference="positions" link={false}>
+      <ReferenceInput
+        source="position"
+        label="Position"
+        reference="positions"
+        link={false}
+      >
         <AutocompleteInput
           validate={required()}
           optionText="title"
@@ -83,7 +98,12 @@ const EmployeeEdit = () => (
 const EmployeeCreate = () => (
   <Create>
     <SimpleForm sanitizeEmptyValues>
-    <ReferenceInput source="person" label="Employee" reference="persons" link={false}>
+      <ReferenceInput
+        source="person"
+        label="Employee"
+        reference="persons"
+        link={false}
+      >
         <AutocompleteInput
           validate={required()}
           label="Employee"
@@ -92,7 +112,12 @@ const EmployeeCreate = () => (
           }}
         />
       </ReferenceInput>
-      <ReferenceInput source="position" label="Position" reference="positions" link={false}>
+      <ReferenceInput
+        source="position"
+        label="Position"
+        reference="positions"
+        link={false}
+      >
         <AutocompleteInput
           validate={required()}
           optionText="title"

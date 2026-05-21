@@ -8,28 +8,13 @@ import {
   TextInput,
   List,
   DataTable,
-  Labeled,
-  ArrayField,
-  ArrayInput,
-  SimpleFormIterator,
-  required,
-  ReferenceField,
-  useRecordContext,
   ReferenceInput,
   AutocompleteArrayInput,
   ReferenceArrayField,
   SingleFieldList,
-  ChipField
-
+  ChipField,
+  required,
 } from "react-admin";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { useContext } from "react";
-
-const Test =  () => {
-  const rec = useRecordContext();
-  console.log(rec)
-}
 
 const ServiceList = () => {
   return (
@@ -44,14 +29,12 @@ const ServiceList = () => {
             source="products"
             label="Products used for the service"
             reference="products"
-            link={false}
           >
             <SingleFieldList>
-                <ChipField source="name" />
+              <ChipField source="name" />
             </SingleFieldList>
           </ReferenceArrayField>
         </DataTable.Col>
-        
       </DataTable>
     </List>
   );
@@ -68,11 +51,10 @@ const ServiceShow = () => (
         source="products"
         label="Products used for the service"
         reference="products"
-        link={false}
       >
         <SingleFieldList>
           <ChipField source="name" />
-      </SingleFieldList>
+        </SingleFieldList>
       </ReferenceArrayField>
     </SimpleShowLayout>
   </Show>

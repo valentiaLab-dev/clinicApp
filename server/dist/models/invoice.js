@@ -20,13 +20,13 @@ const schema = new mongoose_1.default.Schema({
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "Patient",
     },
-    discount: [{
+    discount: [
+        {
             type: mongoose_1.default.Schema.Types.ObjectId,
             ref: "Discount",
-        }],
-    print_request: [
-        { type: Date }
-    ]
+        },
+    ],
+    print_request: [{ type: Date }],
 });
 schema.set("toJSON", {
     transform: (document, returnedObject) => {
