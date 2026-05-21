@@ -12,10 +12,10 @@ const express_1 = __importDefault(require("express"));
 const responses_1 = __importDefault(require("../constants/responses"));
 const router = express_1.default.Router();
 router.get("/", async (request, response) => {
-    const query = 'query' in request ? request.query : {};
-    const filter = 'filter' in query ? query.filter : {};
-    const parsedFilter = typeof filter === 'string' ? JSON.parse(filter) : {};
-    const populate = 'populate' in parsedFilter ? parsedFilter.populate : '';
+    const query = "query" in request ? request.query : {};
+    const filter = "filter" in query ? query.filter : {};
+    const parsedFilter = typeof filter === "string" ? JSON.parse(filter) : {};
+    const populate = "populate" in parsedFilter ? parsedFilter.populate : "";
     const collection = await patient_1.default.find({}).populate(populate);
     response.setHeader("X-Total-Count", "10");
     response.setHeader("Access-Control-Expose-Headers", "Content-Range");
@@ -37,8 +37,8 @@ router.get("/:id", async (request, response) => {
 router.post("/", async (request, response) => {
     const body = request.body;
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
         const user = await user_1.default.findById(decodedToken.id);
@@ -57,8 +57,8 @@ router.post("/clean", async (request, response) => {
 });
 router.put("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }
@@ -71,8 +71,8 @@ router.put("/:id", async (request, response) => {
 });
 router.delete("/:id", async (request, response) => {
     if (config_1.default.ENV !== "test") {
-        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? '', config_1.default.SECRET);
-        if (typeof decodedToken === 'string') {
+        const decodedToken = jsonwebtoken_1.default.verify(request.token ?? "", config_1.default.SECRET);
+        if (typeof decodedToken === "string") {
             return response.status(400).json({ error: responses_1.default.ERR_TOKEN_INVALID });
         }
     }

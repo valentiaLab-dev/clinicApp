@@ -27,7 +27,7 @@ const schema = new mongoose_1.default.Schema({
     value_type: {
         type: String,
         required: true,
-        default: "value"
+        default: "value",
     },
 });
 schema.set("toJSON", {
